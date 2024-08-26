@@ -1,2 +1,24 @@
-# go-weather-forecast
-A simple weather forecast project with golang
+# BASIC POSTGRESQL APPLICATION VIA GOLANG
+
+In this study, I will try to introduce the simplest postgreSQL applicaiton using the Golang programming language. Intermediate level knowledge of Golang language will be sufficient.
+
+> ## Working environment
+>
+> - Debian Operating System
+> - Golang sw language
+> - PostgreSQL
+> - DBeaver
+> - VS Code 
+
+## General hierarchy of the project
+![hierarchy.PNG](pictures/Weather-service-hiearchy.PNG)
+
+
+
+
+
+# Github source code
+
+
+
+__**I wish you good coding, thinking that it is educational and fun.**__

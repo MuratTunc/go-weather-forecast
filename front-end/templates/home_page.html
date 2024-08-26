@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <title>WEATHER-MICROSERVER</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<div class="container">
+  <div class="row">
+      <div class="col">
+          <h1 class="mt-5">--WEATHER MICROSERVER--</h1>
+          <hr>
+
+          <div id="output" class="mt-5" style="outline: 1px solid silver; padding: 2em;">
+              <span class="text-muted">Output shows here...</span>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col">
+          <h4 class="mt-5">Sent</h4>
+          <div class="mt-1" style="outline: 1px solid silver; padding: 2em;">
+              <pre id="payload"><span class="text-muted">Nothing sent yet...</span></pre>
+          </div>
+      </div>
+      <div class="col">
+          <h4 class="mt-5">Received</h4>
+          <div class="mt-1" style="outline: 1px solid silver; padding: 2em;">
+              <pre id="received"><span class="text-muted">Nothing received yet...</span></pre>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<body>
