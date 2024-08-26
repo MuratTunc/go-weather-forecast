@@ -1,27 +1,29 @@
 package main
 
 import (
-	"fmt"
-	"io"
+	"log"
 	"net/http"
 )
 
-func main() {
-	url := "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/istanbul?unitGroup=metric&key=DTY5HP4XELL8CHTCGW65EXZ4G&contentType=json"
+const port = ":8082"
 
-	req, err := http.NewRequest("GET", url, nil)
+type Config struct{}
+
+func main() {
+	app := Config{}
+
+	log.Printf("WEATHER-SERVICE is starting on port %s\n", port)
+
+	// define http server
+	srv := &http.Server{
+		Addr:    port,
+		Handler: app.routes(),
+	}
+
+	// start the server
+	err := srv.ListenAndServe()
 	if err != nil {
-		fmt.Print(err.Error())
+		log.Panic(err)
 	}
-	req.Header.Add("x-rapidapi-key", "DTY5HP4XELL8CHTCGW65EXZ4G")
-	res, err := http.DefaultClient.Do(req)
-	if err != nil {
-		fmt.Print(err.Error())
-	}
-	defer res.Body.Close()
-	body, readErr := io.ReadAll(res.Body)
-	if readErr != nil {
-		fmt.Print(err.Error())
-	}
-	fmt.Println(string(body))
+	log.Printf("WEATHER-SERVICE is started no error... on port %s\n", port)
 }

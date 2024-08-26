@@ -21,6 +21,7 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
+	log.Printf("WEB-PAGE-FRONT-END-SERVICES is started no error... on port %s\n", port)
 }
 
 func renderTemplate(w http.ResponseWriter, tmpl string) {

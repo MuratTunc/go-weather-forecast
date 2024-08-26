@@ -5,14 +5,14 @@ import (
 	"net/http"
 )
 
-const port = ":8084"
+const port = ":8081"
 
 type Config struct{}
 
 func main() {
 	app := Config{}
 
-	log.Printf("Starting broker service on port %s\n", port)
+	log.Printf("BROKER-SERVICE is starting on port %s\n", port)
 
 	// define http server
 	srv := &http.Server{
@@ -25,4 +25,5 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
+	log.Printf("BROKER-SERVICE is started no error... on port %s\n", port)
 }
