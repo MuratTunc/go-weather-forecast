@@ -8,7 +8,7 @@ In this study, I will try to introduce the simplest postgreSQL applicaiton using
 > - Golang sw language
 > - PostgreSQL
 > - DBeaver
-> - VS Code 
+> - VS Code IDE 
 
 ## General hierarchy of the project
 ![hierarchy.PNG](pictures/Weather-service-hiearchy.PNG)
