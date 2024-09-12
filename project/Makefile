@@ -1,9 +1,10 @@
 FRONT_END_BINARY=frontApp
 BROKER_BINARY=brokerApp
+WEATHER_BINARY=brokerApp
 
 ## up: starts all containers in the background without forcing build
 up:
-	@echo "Starting Docker images..."
+	@echo "Starting Docker images in the background ..."
 	docker-compose up -d
 	@echo "Docker images started!"
 
@@ -21,16 +22,22 @@ down:
 	docker-compose down
 	@echo "Done!"
 
+## build_front: builds the frone end binary
+build_front:
+	@echo "Building front end binary..."
+	cd ../front-end && env CGO_ENABLED=0 go build -o ${FRONT_END_BINARY} ./cmd/web
+	@echo "Done!"
+
 ## build_broker: builds the broker binary as a linux executable
 build_broker:
 	@echo "Building broker binary..."
 	cd ../broker-service && env GOOS=linux CGO_ENABLED=0 go build -o ${BROKER_BINARY} ./cmd/api
 	@echo "Done!"
 
-## build_front: builds the frone end binary
-build_front:
-	@echo "Building front end binary..."
-	cd ../front-end && env CGO_ENABLED=0 go build -o ${FRONT_END_BINARY} ./cmd/web
+## build_weather: builds the weather binary as a linux executable
+build_weather:
+	@echo "Building weather binary..."
+	cd ../weather-service && env GOOS=linux CGO_ENABLED=0 go build -o ${WEATHER_BINARY} ./cmd/api
 	@echo "Done!"
 
 ## start: starts the front end
