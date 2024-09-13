@@ -12,3 +12,12 @@ services:
     deploy:
       mode: replicated
       replicas: 1
+
+  weather-service:
+    build:
+      context: ./../weather-service
+      dockerfile: ./../weather-service/weather-service.dockerfile
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1    
