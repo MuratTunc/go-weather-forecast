@@ -7,7 +7,7 @@ import (
 	"text/template"
 )
 
-const port = ":8084"
+const port = ":8085"
 const tmpl_page = "../../templates/home_page.html"
 
 func main() {
