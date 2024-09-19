@@ -8,7 +8,7 @@ import (
 )
 
 const port = ":8090"
-const tmpl_page = "templates/home_page.html"
+const tmpl_page = "/home/mutu/projects/golang/go-weather-forecast/front-end/cmd/web/templates/home_page.html"
 
 func main() {
 
