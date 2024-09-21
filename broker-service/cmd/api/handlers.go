@@ -9,18 +9,20 @@ import (
 
 type RequestPayload struct {
 	Action  string         `json:"action"`
-	Weather WeatherPayload `json:"weather,omitempty"`
+	Weather WeatherPayload `json:"weather,omitempty,emptydata"`
 }
 
 type WeatherPayload struct {
-	CountryName string `json:"CountryName"`
-	Temperature string `json:"Temperature"`
+	Error   string `json:"CountryName"`
+	Message string `json:"Temperature"`
+	Data    string `json:"DATA"`
 }
 
 func (app *Config) Broker(w http.ResponseWriter, r *http.Request) {
 	payload := jsonResponse{
 		Error:   false,
 		Message: "Hit the broker",
+		Data:    "Data",
 	}
 
 	_ = app.writeJSON(w, http.StatusOK, payload)

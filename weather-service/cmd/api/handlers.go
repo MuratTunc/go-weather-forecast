@@ -11,6 +11,7 @@ func (app *Config) Weather(w http.ResponseWriter, r *http.Request) {
 	payload := jsonResponse{
 		Error:   false,
 		Message: "Message from weather service...",
+		Data:    "DATA...",
 	}
 
 	url := "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/istanbul?unitGroup=metric&key=DTY5HP4XELL8CHTCGW65EXZ4G&contentType=json"
@@ -31,6 +32,7 @@ func (app *Config) Weather(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println(string(body))
 	payload.Message = string(body)
+	payload.Data = string(body)
 
 	app.writeJSON(w, http.StatusAccepted, payload)
 
