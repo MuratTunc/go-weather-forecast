@@ -67,7 +67,7 @@ func (app *Config) errorJSON(w http.ResponseWriter, err error, status ...int) er
 
 	var payload jsonResponse
 	payload.Error = true
-	payload.Message = err.Error()
+	payload.Message = err.Error() + "SYSTEM CHECK!!!"
 
 	return app.writeJSON(w, statusCode, payload)
 }

@@ -9,7 +9,7 @@ import (
 
 type RequestPayload struct {
 	Action  string         `json:"action"`
-	Weather WeatherPayload `json:"log,omitempty"`
+	Weather WeatherPayload `json:"weather,omitempty"`
 }
 
 type WeatherPayload struct {
@@ -48,11 +48,11 @@ func (app *Config) HandleSubmission(w http.ResponseWriter, r *http.Request) {
 
 // weather calls the weather microservice and sends back the appropriate response
 func (app *Config) weather(w http.ResponseWriter, a WeatherPayload) {
-	// create some json we'll send to the auth microservice
+	// create some json we'll send to the wather microservice
 	jsonData, _ := json.MarshalIndent(a, "", "\t")
 
 	// call the service
-	request, err := http.NewRequest("POST", "http://weather-service/weather", bytes.NewBuffer(jsonData))
+	request, err := http.NewRequest("POST", "http://weather-service:8092/weather", bytes.NewBuffer(jsonData))
 	if err != nil {
 		app.errorJSON(w, err)
 		return
@@ -78,7 +78,7 @@ func (app *Config) weather(w http.ResponseWriter, a WeatherPayload) {
 	// create a variable we'll read response.Body into
 	var jsonFromService jsonResponse
 
-	// decode the json from the auth service
+	// decode the json from the weather service
 	err = json.NewDecoder(response.Body).Decode(&jsonFromService)
 	if err != nil {
 		app.errorJSON(w, err)

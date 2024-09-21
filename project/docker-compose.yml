@@ -22,4 +22,5 @@ services:
       - "8092:8092"
     deploy:
       mode: replicated
-      replicas: 1    
+      replicas: 1
+        
