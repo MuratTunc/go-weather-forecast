@@ -50,7 +50,7 @@ func (app *Config) HandleSubmission(w http.ResponseWriter, r *http.Request) {
 
 // weather calls the weather microservice and sends back the appropriate response
 func (app *Config) weather(w http.ResponseWriter, a WeatherPayload) {
-	// create some json we'll send to the wather microservice
+	// create some json we'll send to the weather microservice
 	jsonData, _ := json.MarshalIndent(a, "", "\t")
 
 	// call the service

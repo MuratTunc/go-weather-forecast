@@ -14,7 +14,7 @@ func (app *Config) Weather(w http.ResponseWriter, r *http.Request) {
 		Data:    "DATA...",
 	}
 
-	url := "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/istanbul?unitGroup=metric&key=DTY5HP4XELL8CHTCGW65EXZ4G&contentType=json"
+	url := "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Turkey?unitGroup=metric&key=DTY5HP4XELL8CHTCGW65EXZ4G&contentType=json"
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
