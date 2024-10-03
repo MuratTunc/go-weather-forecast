@@ -20,5 +20,7 @@ In this study, I will try to introduce the simplest postgreSQL applicaiton using
 # Github source code
 
 
-
+IN this project there a 2 services which are Broker and Weather.
+Broker service is the main entrance os the HTTP request from user web application.
+After getting user action, it will send this to Weather service.
 __**I wish you good coding, thinking that it is educational and fun.**__
