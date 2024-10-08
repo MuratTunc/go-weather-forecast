@@ -4,7 +4,7 @@ In this study, I will try to introduce the simplest postgreSQL applicaiton using
 
 > ## Working environment
 >
-> - Debian Operating System
+> - Debian Operating System (Linux)
 > - Golang sw language
 > - PostgreSQL
 > - DBeaver
