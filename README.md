@@ -24,5 +24,5 @@ In this project there a 2 services which are Broker and Weather.
 Broker service is the main entrance os the HTTP request from user web application.
 After getting user action, it will send this to Weather service.
 
-Broker service bahaves like a Gateaway
+Broker service bahaves like a Gateaway services.
 __**I wish you good coding, thinking that it is educational and fun.**__
