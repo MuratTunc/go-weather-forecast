@@ -4,11 +4,11 @@ In this study, I will try to introduce the simplest postgreSQL applicaiton using
 
 > ## Working environment
 >
-> - Debian Operating System (Linux)
+> - Ubuntu Operating System (Linux)
 > - Golang sw language
 > - PostgreSQL
 > - DBeaver
-> - VS Code IDE 
+> - VS Code IDE
 
 ## General hierarchy of the project
 ![hierarchy.PNG](pictures/Weather-service-hiearchy.PNG)
@@ -16,6 +16,30 @@ In this study, I will try to introduce the simplest postgreSQL applicaiton using
 
 
 
+## Start the program
+Go under projects directory.
+Type _sudo make up_build_ comment from terminal.
+After this command, binary files of _Broker_ and _weather_ services will be created.
+
+Type _make up_ command from terminal. After this command, docker images will be started in the background.
+
+The last lines of the console output will be as follows
+
+ ```
+ project_broker-service_1 is up-to-date
+ project_weather-service_1 is up-to-date
+ Docker images started!
+  ```
+
+Type _make start_ command from terminal. After this command, the front end binary will be created and run.
+```
+Building front end binary...
+cd ../front-end && env CGO_ENABLED=0 /usr/local/go/bin/go build -o frontApp ./cmd/web
+Done!
+Starting front end
+cd ../front-end && ./frontApp
+WEB PAGE FRONT END SERVICES IS STARTED!!! AT LOCALHOST PORT :8090
+```
 
 # Github source code
 
