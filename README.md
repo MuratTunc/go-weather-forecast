@@ -41,6 +41,14 @@ cd ../front-end && ./frontApp
 WEB PAGE FRONT END SERVICES IS STARTED!!! AT LOCALHOST PORT :8090
 ```
 
+Type _sudo docker ps_ command from terminal. After this command, you will see running docker images.
+```
+CONTAINER ID   IMAGE                     COMMAND             CREATED        STATUS        PORTS                                       NAMES
+e1f8745696b1   project_weather-service   "/app/weatherApp"   20 hours ago   Up 20 hours   0.0.0.0:8092->8092/tcp, :::8092->8092/tcp   project_weather-service_1
+6360be6d49d1   project_broker-service    "/app/brokerApp"    20 hours ago   Up 20 hours   0.0.0.0:8091->8091/tcp, :::8091->8091/tcp   project_broker-service_1
+WEB PAGE FRONT END SERVICES IS STARTED!!! AT LOCALHOST PORT :8090
+```
+
 # Github source code
 
 
