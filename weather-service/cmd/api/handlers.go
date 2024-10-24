@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -8,13 +9,25 @@ import (
 
 func (app *Config) Weather(w http.ResponseWriter, r *http.Request) {
 
+	var WeatherPayload struct {
+		CountryName string `json:"name"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&WeatherPayload) //app.readJSON(w, r, &WeatherPayload)
+	if err != nil {
+		app.errorJSON(w, err, http.StatusBadRequest)
+		return
+	}
+
 	payload := jsonResponse{
 		Error:   false,
 		Message: "Message from weather service...",
 		Data:    "DATA...",
 	}
 
-	url := "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Turkey?unitGroup=metric&key=DTY5HP4XELL8CHTCGW65EXZ4G&contentType=json"
+	countryFromBroker := WeatherPayload.CountryName
+
+	url := "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + countryFromBroker + "?unitGroup=metric&key=DTY5HP4XELL8CHTCGW65EXZ4G&contentType=json"
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {

@@ -8,52 +8,39 @@ import (
 )
 
 type RequestPayload struct {
-	Action  string         `json:"action"`
-	Weather WeatherPayload `json:"weather,omitempty,emptydata"`
-}
-
-type WeatherPayload struct {
-	Error   string `json:"CountryName"`
-	Message string `json:"Temperature"`
-	Data    string `json:"DATA"`
+	Weather string `json:"name"`
 }
 
 func (app *Config) Broker(w http.ResponseWriter, r *http.Request) {
 	payload := jsonResponse{
 		Error:   false,
 		Message: "Hit the broker",
-		Data:    "Data",
 	}
-
 	_ = app.writeJSON(w, http.StatusOK, payload)
 }
 
 // HandleSubmission is the main point of entry into the broker. It accepts a JSON
 // payload and performs an action based on the value of "action" in that JSON.
 func (app *Config) HandleSubmission(w http.ResponseWriter, r *http.Request) {
-	var requestPayload RequestPayload
 
+	var requestPayload RequestPayload
 	err := app.readJSON(w, r, &requestPayload)
+
 	if err != nil {
 		app.errorJSON(w, err)
 		return
 	}
 
-	switch requestPayload.Action {
-	case "weather":
-		app.weather(w, requestPayload.Weather)
+	app.weather(w, requestPayload)
 
-	default:
-		app.errorJSON(w, errors.New("unknown action"))
-	}
 }
 
 // weather calls the weather microservice and sends back the appropriate response
-func (app *Config) weather(w http.ResponseWriter, a WeatherPayload) {
+func (app *Config) weather(w http.ResponseWriter, rPYLD RequestPayload) {
 	// create some json we'll send to the weather microservice
-	jsonData, _ := json.MarshalIndent(a, "", "\t")
+	jsonData, _ := json.MarshalIndent(rPYLD, "", "\t")
 
-	// call the service
+	// call the weather service
 	request, err := http.NewRequest("POST", "http://weather-service:8092/weather", bytes.NewBuffer(jsonData))
 	if err != nil {
 		app.errorJSON(w, err)
