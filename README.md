@@ -1,3 +1,5 @@
+![title.PNG](pictures/weather_fore_cast.PNG)
+
 # WEATHER SERVICE APPLICATION VIA GOLANG
 
 In this study, I will try to introduce the simplest postgreSQL applicaiton using the Golang programming language. Intermediate level knowledge of Golang language will be sufficient.
